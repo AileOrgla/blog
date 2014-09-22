@@ -2,7 +2,7 @@
 
 class welcome extends Controller{
 
-	function index(){
+	function index($this->posts = get_all("SELECT * FROM post")){
 		$this->users = get_all("SELECT * FROM user");
 	}
 
