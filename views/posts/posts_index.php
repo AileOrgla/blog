@@ -8,3 +8,6 @@
     </div>
 </div>
 <?endforeach?>
+</br>
+ </hr>
+

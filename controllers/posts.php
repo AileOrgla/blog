@@ -27,4 +27,12 @@ function index(){
 		echo "\$_POST:<br>";
 		var_dump($_POST);
 	}
+    function view_post(){
+        $data = $_POST['data'];
+        $data['user_id'] = 0;
+        $data['post_id'] = $this->params[0];
+        insert('comment', $data);
+
+    }
+
 }
