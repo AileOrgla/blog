@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2014 at 09:56 AM
+-- Generation Time: Oct 13, 2014 at 10:00 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
 --
 
 INSERT INTO `comment` (`comment_id`, `comment_text`, `comment_created`, `user_id`, `post_id`) VALUES
-(0, '', '2014-09-24 15:52:54', 1, 1);
+(0, 'Siin on kommentaar', '2014-09-24 15:52:54', 1, 1);
 
 -- --------------------------------------------------------
 
