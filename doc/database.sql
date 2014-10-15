@@ -3,11 +3,10 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2014 at 10:00 AM
+-- Generation Time: Oct 15, 2014 at 11:23 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -23,19 +22,29 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE IF NOT EXISTS `comment` (
-  `comment_id` int(11) unsigned NOT NULL,
+`comment_id` int(11) unsigned NOT NULL,
   `comment_text` varchar(500) NOT NULL,
   `comment_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) unsigned NOT NULL,
   `post_id` int(11) unsigned NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- RELATIONS FOR TABLE `comment`:
+--   `user_id`
+--       `user` -> `user_id`
+--   `post_id`
+--       `post` -> `post_id`
+--
 
 --
 -- Dumping data for table `comment`
 --
 
 INSERT INTO `comment` (`comment_id`, `comment_text`, `comment_created`, `user_id`, `post_id`) VALUES
-(0, 'Siin on kommentaar', '2014-09-24 15:52:54', 1, 1);
+(1, 'plapla', '2014-09-24 15:52:54', 1, 1),
+(3, 'Kommentaar', '2014-10-15 07:18:06', 1, 1),
+(4, 'Siin on veel kolmas kommentaar', '2014-10-15 07:20:40', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -51,6 +60,12 @@ CREATE TABLE IF NOT EXISTS `post` (
   `post_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(10) unsigned NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- RELATIONS FOR TABLE `post`:
+--   `user_id`
+--       `user` -> `user_id`
+--
 
 --
 -- Dumping data for table `post`
@@ -70,6 +85,14 @@ CREATE TABLE IF NOT EXISTS `post_tags` (
   `post_id` int(11) unsigned NOT NULL,
   `tag_id` int(11) unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- RELATIONS FOR TABLE `post_tags`:
+--   `post_id`
+--       `post` -> `post_id`
+--   `tag_id`
+--       `tag` -> `tag_id`
+--
 
 --
 -- Dumping data for table `post_tags`
@@ -159,6 +182,11 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+MODIFY `comment_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
@@ -196,4 +224,3 @@ ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id
 ALTER TABLE `post_tags`
 ADD CONSTRAINT `post_tags_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`),
 ADD CONSTRAINT `post_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tag` (`tag_id`);
-SET FOREIGN_KEY_CHECKS=1;
