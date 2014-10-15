@@ -29,7 +29,7 @@ function index(){
 	}
     function view_post(){
         $data = $_POST['data'];
-        $data['user_id'] = 0;
+        $data['user_id'] = 1;
         $data['post_id'] = $this->params[0];
         insert('comment', $data);
 

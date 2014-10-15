@@ -18,6 +18,17 @@ class tags extends Controller{
         $this->posts = get_all("SELECT * FROM post_tags NATURAL JOIN post WHERE tag_id='$tag_id'");
         $this->tag_name = get_one("SELECT tag_name FROM tag WHERE tag_id='$tag_id'");
     }
+    function index_ajax(){
+             echo "\$_POST:<br>";
+     var_dump($_POST);
+ }
+
+
+ function index_post(){
+         echo "\$_POST:<br>";
+     var_dump($_POST);
+     }
+
 }
 
 
